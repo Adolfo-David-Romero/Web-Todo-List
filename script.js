@@ -15,6 +15,7 @@ function addTask(){
         li.appendChild(span); //display cross icon 
         }
     inputBox.value=""//reset box
+    saveData();
 }
 
 listContainer.addEventListener("click", function(e){
@@ -25,3 +26,13 @@ listContainer.addEventListener("click", function(e){
         e.target.parentElement.remove(); //delete li element
     }
 }, false);
+
+//function to save items in browser
+function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML); //save anything in listContainer to storage
+}
+
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data")
+}
+showTask();
